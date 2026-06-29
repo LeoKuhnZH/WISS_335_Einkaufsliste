@@ -51,6 +51,17 @@
             android:layout_marginStart="8dp"
             android:text="Produktname"/>
 
+        <TextView
+            android:id="@+id/textViewListe"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="16dp"
+            android:text="Keine Produkte"
+            app:layout_constraintTop_toBottomOf="@id/addbtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
