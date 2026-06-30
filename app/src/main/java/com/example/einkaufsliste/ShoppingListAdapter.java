@@ -1,5 +1,6 @@
 package com.example.einkaufsliste;
 
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,25 +69,52 @@ public class ShoppingListAdapter extends ListAdapter<ShoppingItem, ShoppingListA
             textViewQuantityPrice.setText(String.format(Locale.getDefault(), "%d x %.2f €", item.getQuantity(), item.getPrice()));
             textViewComment.setText(item.getComment());
 
+            // Remove listener before setting state to avoid infinite loops or unnecessary calls
             checkBox.setOnCheckedChangeListener(null);
             checkBox.setChecked(item.isChecked());
-
-            if (item.isChecked()) {
-                textViewName.setPaintFlags(textViewName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                itemView.setAlpha(0.5f);
-            } else {
-                textViewName.setPaintFlags(textViewName.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-                itemView.setAlpha(1.0f);
-            }
+            
+            // Apply initial visual state
+            updateVisualState(item.isChecked());
 
             checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 item.setChecked(isChecked);
+                updateVisualState(isChecked); // Instant feedback
                 listener.onCheckToggle(item);
             });
 
             buttonDelete.setOnClickListener(v -> listener.onDeleteClick(item));
-
             itemView.setOnClickListener(v -> listener.onItemClick(item));
+        }
+
+        private void updateVisualState(boolean isChecked) {
+            int flags;
+            int textColor;
+            int secondaryTextColor;
+            float alpha;
+
+            if (isChecked) {
+                flags = textViewName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG;
+                textColor = Color.parseColor("#9E9E9E");
+                secondaryTextColor = Color.parseColor("#9E9E9E");
+                alpha = 0.6f;
+            } else {
+                flags = textViewName.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG);
+                textColor = Color.BLACK;
+                secondaryTextColor = Color.parseColor("#757575");
+                alpha = 1.0f;
+            }
+
+            textViewName.setPaintFlags(flags);
+            textViewTotal.setPaintFlags(flags);
+            textViewQuantityPrice.setPaintFlags(flags);
+            textViewComment.setPaintFlags(flags);
+
+            textViewName.setTextColor(textColor);
+            textViewTotal.setTextColor(textColor);
+            textViewQuantityPrice.setTextColor(secondaryTextColor);
+            textViewComment.setTextColor(secondaryTextColor);
+
+            itemView.setAlpha(alpha);
         }
     }
 

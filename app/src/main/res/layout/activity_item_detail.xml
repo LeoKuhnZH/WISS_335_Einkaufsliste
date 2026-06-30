@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -18,11 +19,11 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp"
-            tools:context=".ItemDetailActivity">
+            android:orientation="vertical"
+            android:padding="24dp">
 
             <!-- Name -->
             <TextView
@@ -31,32 +32,24 @@
                 android:layout_height="wrap_content"
                 android:text="Produktname:"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/detailName"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/labelName"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editName"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Produktname"
                 android:visibility="gone"
-                android:inputType="textCapSentences"
-                app:layout_constraintTop_toBottomOf="@id/labelName"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:inputType="textCapSentences" />
 
             <!-- Quantity -->
             <TextView
@@ -66,9 +59,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Menge:"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                app:layout_constraintTop_toBottomOf="@id/detailName"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/detailQuantity"
@@ -76,20 +67,15 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textSize="18sp"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/labelQuantity"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editQuantity"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Menge"
                 android:visibility="gone"
-                android:inputType="number"
-                app:layout_constraintTop_toBottomOf="@id/labelQuantity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:inputType="number" />
 
             <!-- Price -->
             <TextView
@@ -99,9 +85,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Einzelpreis:"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                app:layout_constraintTop_toBottomOf="@id/detailQuantity"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/detailPrice"
@@ -109,20 +93,15 @@
                 android:layout_height="wrap_content"
                 android:text="0.00 €"
                 android:textSize="18sp"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/labelPrice"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editPrice"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Einzelpreis"
                 android:visibility="gone"
-                android:inputType="numberDecimal"
-                app:layout_constraintTop_toBottomOf="@id/labelPrice"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:inputType="numberDecimal" />
 
             <!-- Total -->
             <TextView
@@ -132,9 +111,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Gesamtpreis:"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                app:layout_constraintTop_toBottomOf="@id/detailPrice"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/detailTotal"
@@ -143,9 +120,7 @@
                 android:text="0.00 €"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/labelTotal"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/black" />
 
             <!-- Status -->
             <TextView
@@ -155,9 +130,7 @@
                 android:layout_marginTop="24dp"
                 android:text="Status:"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                app:layout_constraintTop_toBottomOf="@id/detailTotal"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/detailStatus"
@@ -165,9 +138,7 @@
                 android:layout_height="wrap_content"
                 android:text="Noch zu kaufen"
                 android:textSize="18sp"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/labelStatus"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/black" />
 
             <!-- Comment -->
             <TextView
@@ -177,32 +148,24 @@
                 android:layout_marginTop="24dp"
                 android:text="Kommentar:"
                 android:textSize="14sp"
-                android:textColor="#757575"
-                app:layout_constraintTop_toBottomOf="@id/detailStatus"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="#757575" />
 
             <TextView
                 android:id="@+id/detailComment"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Kein Kommentar"
                 android:textSize="18sp"
                 android:textStyle="italic"
-                android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@id/labelComment"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/editComment"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Kommentar"
                 android:visibility="gone"
-                android:inputType="textCapSentences"
-                app:layout_constraintTop_toBottomOf="@id/labelComment"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:inputType="textCapSentences" />
 
             <!-- Save Button -->
             <Button
@@ -211,11 +174,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Speichern"
-                android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/editComment"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:visibility="gone" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

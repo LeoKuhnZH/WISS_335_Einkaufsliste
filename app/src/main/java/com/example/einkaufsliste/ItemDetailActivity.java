@@ -1,5 +1,7 @@
 package com.example.einkaufsliste;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.activity.EdgeToEdge;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Locale;
@@ -30,7 +36,14 @@ public class ItemDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_item_detail);
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.detail_root), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -78,6 +91,35 @@ public class ItemDetailActivity extends AppCompatActivity {
         detailTotal.setText(String.format(Locale.getDefault(), "%.2f €", quantity * price));
         detailStatus.setText(isChecked ? "Gekauft" : "Noch zu kaufen");
         detailComment.setText(comment.isEmpty() ? "Kein Kommentar" : comment);
+
+        if (isChecked) {
+            int flags = detailName.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG;
+            detailName.setPaintFlags(flags);
+            detailQuantity.setPaintFlags(flags);
+            detailPrice.setPaintFlags(flags);
+            detailTotal.setPaintFlags(flags);
+            detailComment.setPaintFlags(flags);
+
+            int gray = Color.parseColor("#9E9E9E");
+            detailName.setTextColor(gray);
+            detailQuantity.setTextColor(gray);
+            detailPrice.setTextColor(gray);
+            detailTotal.setTextColor(gray);
+            detailComment.setTextColor(gray);
+        } else {
+            int flags = detailName.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG);
+            detailName.setPaintFlags(flags);
+            detailQuantity.setPaintFlags(flags);
+            detailPrice.setPaintFlags(flags);
+            detailTotal.setPaintFlags(flags);
+            detailComment.setPaintFlags(flags);
+
+            detailName.setTextColor(Color.BLACK);
+            detailQuantity.setTextColor(Color.BLACK);
+            detailPrice.setTextColor(Color.BLACK);
+            detailTotal.setTextColor(Color.BLACK);
+            detailComment.setTextColor(Color.BLACK);
+        }
 
         editName.setText(name);
         editQuantity.setText(String.valueOf(quantity));
