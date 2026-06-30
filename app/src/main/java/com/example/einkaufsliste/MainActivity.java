@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         String menge = data.getStringExtra("menge");
                         String preis = data.getStringExtra("preis");
 
-                        String eintrag = "🛒 " + produkt + " | " +
+                        String eintrag = "- " + produkt + " | " +
                                 beschreibung + " | " +
                                 menge + " | CHF " + preis;
 
