@@ -15,23 +15,24 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"/>
 
-<EditText
-android:id="@+id/editBeschreibung"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:layout_marginStart="16dp"
-android:layout_marginTop="12dp"
-android:layout_marginEnd="16dp"
-android:hint="Produktbeschreibung"
-android:inputType="textMultiLine"
-android:minLines="3"
-android:maxLines="5"
-android:gravity="top"
-app:layout_constraintTop_toBottomOf="@id/editProdukt"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintEnd_toEndOf="parent"/>
+    <EditText
+        android:id="@+id/editBeschreibung"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="top"
+        android:hint="Produktbeschreibung"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:minLines="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editProdukt" />
 
-<EditText
+    <EditText
 android:id="@+id/editMenge"
 android:layout_width="0dp"
 android:layout_height="wrap_content"
@@ -57,7 +58,8 @@ app:layout_constraintTop_toBottomOf="@id/editBeschreibung"
 app:layout_constraintStart_toEndOf="@id/editMenge"
 app:layout_constraintEnd_toEndOf="parent"/>
 
-<Button
+
+    <Button
 android:id="@+id/btnSpeichern"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
