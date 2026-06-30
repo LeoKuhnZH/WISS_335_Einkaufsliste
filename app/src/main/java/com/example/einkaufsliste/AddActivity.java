@@ -28,10 +28,16 @@ public class AddActivity extends AppCompatActivity {
             String menge = editMenge.getText().toString().trim();
             String preis = editPreis.getText().toString().trim();
 
-            // Pflichtfeld funktion
+            // Pflichtfeld funktion Produkt
             if (produkt.isEmpty()) {
                 editProdukt.setError("Pflichtfeld");
                 return;
+            }
+            //Pflichtfeld Preis
+            if (preis.isEmpty()){
+                editPreis.setError("Plichtfeld");
+                return;
+
             }
 
             // Daten werden zurück gegeben
