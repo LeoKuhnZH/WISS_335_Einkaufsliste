@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
 
                         Intent data = result.getData();
-
+// Get Data
                         String produkt = data.getStringExtra("produkt");
                         String beschreibung = data.getStringExtra("beschreibung");
                         String menge = data.getStringExtra("menge");
@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
                         String eintrag = "- " + produkt + " | " +
                                 beschreibung + " | " +
                                 menge + " | CHF " + preis;
-
+// Produkt Eintagen
                         produktListe.add(eintrag);
-
+// Und dann liste aktualiesieren
                         updateListe();
                     }
                 }
         );
-
+// Button Velinkung zu AddActivity
         button.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AddActivity.class);
             addProductLauncher.launch(intent);
